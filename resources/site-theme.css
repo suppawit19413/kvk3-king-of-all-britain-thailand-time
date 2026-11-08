@@ -1,0 +1,167 @@
+/* Universal Modern Site Styles for KvK 3 Hub */
+:root {
+  --bg-main: #0a0e17;
+  --bg-card: rgba(18, 26, 43, 0.85);
+  --bg-header: rgba(10, 14, 23, 0.92);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent-gold: #f59e0b;
+  --accent-blue: #38bdf8;
+  --accent-purple: #a855f7;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+}
+
+/* Reset row headers & column headers from raw google sheet export */
+th.row-header,
+th[id*="C"],
+th.freezebar-cell,
+col.row-header,
+col.frozen-column-cell,
+thead {
+  display: none !important;
+}
+
+/* Base Body Setup */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-main) !important;
+  color: var(--text-main);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Modern Top Navigation Bar */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.site-nav-brand {
+  font-weight: 800;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.site-nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.site-nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.site-nav-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+/* Page Container wrapper for sheet pages */
+.page-container {
+  max-width: 1400px;
+  margin: 28px auto 60px;
+  padding: 0 16px;
+}
+
+.sheet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  overflow-x: auto;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+/* Responsive Table Enhancements */
+.ritz.grid-container {
+  background: transparent !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+table.waffle {
+  margin: 0 auto;
+  border-collapse: collapse !important;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+table.waffle td {
+  font-family: inherit !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Footer note */
+.site-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 14px;
+  }
+  .site-nav-links {
+    overflow-x: auto;
+    padding-bottom: 4px;
+    justify-content: flex-start;
+  }
+  .site-nav-link {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+  .sheet-card {
+    padding: 10px;
+  }
+}

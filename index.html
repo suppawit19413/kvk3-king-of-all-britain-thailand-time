@@ -3,41 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ปฏิทินและไทม์ไลน์ KvK3 King of All Britain แสดงเวลาไทย UTC+7">
-  <title>KvK3 — King of All Britain | เวลาไทย</title>
+  <meta name="description" content="ปฏิทิน ตารางกิจกรรม และไทม์ไลน์ KvK 3 King of All Britain เวลาไทย UTC+7">
+  <title>KvK 3 — King of All Britain | ปฏิทินและเวลาไทย UTC+7</title>
+  <link rel="stylesheet" href="resources/site-theme.css">
   <style>
-    :root { color-scheme: dark; --bg:#0b1020; --panel:#131c31; --line:#283653; --ink:#edf3ff; --muted:#a9b7d1; --accent:#73a9ff; --accent2:#9d8cff; }
-    * { box-sizing:border-box }
-    body { margin:0; min-height:100vh; font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:radial-gradient(ellipse at 15% 0%,#1d3159 0,transparent 40%),var(--bg) }
-    main { width:min(980px,calc(100% - 32px)); margin:0 auto; padding:64px 0 48px }
-    .eyebrow { color:#9fc1ff; letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; font-weight:700 }
-    h1 { margin:.45rem 0 .5rem; font-size:clamp(2rem,6vw,3.5rem); line-height:1.12; letter-spacing:-.04em }
-    .lead { color:var(--muted); max-width:660px; margin:0 0 28px }
-    .badge { display:inline-flex; align-items:center; gap:8px; border:1px solid #3c5680; border-radius:999px; background:#172744; color:#cfe0ff; padding:6px 12px; font-size:.9rem; font-weight:650 }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:14px; margin-top:26px }
-    a.card { display:block; color:inherit; text-decoration:none; padding:20px; border:1px solid var(--line); border-radius:16px; background:linear-gradient(145deg,#17233b,var(--panel)); transition:transform .16s ease,border-color .16s ease,background .16s ease }
-    a.card:hover { transform:translateY(-2px); border-color:#6488c8; background:#192743 }
-    .card h2 { font-size:1.08rem; margin:0 0 5px }
-    .card p { margin:0; color:var(--muted); font-size:.93rem }
-    .arrow { color:var(--accent); float:right; font-size:1.2rem }
-    footer { border-top:1px solid var(--line); margin-top:30px; padding-top:18px; color:var(--muted); font-size:.88rem }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; scroll-behavior:auto!important } }
+    .hero {
+      text-align: center;
+      padding: 60px 16px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #7dd3fc;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin: 0 0 16px;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 auto 30px;
+      max-width: 680px;
+    }
+    .quick-status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px auto 40px;
+      max-width: 1100px;
+    }
+    .status-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .status-box-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .status-box-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .highlight-red { color: #f87171; }
+    .highlight-gold { color: #fbbf24; }
+    .highlight-blue { color: #38bdf8; }
+    
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(23, 33, 56, 0.7), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      overflow: hidden;
+    }
+    .nav-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+    .nav-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .nav-card:hover::before {
+      opacity: 1;
+    }
+    .nav-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+    .nav-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin: 0 0 16px;
+    }
+    .nav-card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
   </style>
 </head>
 <body>
-  <main>
-    <div class="eyebrow">KvK 3 · King of All Britain</div>
-    <h1>ปฏิทินและไทม์ไลน์</h1>
-    <p class="lead">รวมวันสำคัญ ตารางกิจกรรม และเวลาหลักของ KvK3 โดยแปลงกำหนดการเป็นเวลาไทยแล้ว เลือกหน้าที่ต้องการเปิดได้จากด้านล่าง</p>
-    <span class="badge">เวลาประเทศไทย · UTC+7</span>
-    <section class="grid" aria-label="เอกสาร KvK3">
-      <a class="card" href="Save%20the%20Dates.html"><span class="arrow">↗</span><h2>วันสำคัญ</h2><p>รายการอีเวนต์หลักพร้อมวันที่และเวลาไทย</p></a>
-      <a class="card" href="Timeline.html"><span class="arrow">↗</span><h2>ไทม์ไลน์รายวัน</h2><p>ปฏิทินกิจกรรมเรียงตามวัน</p></a>
-      <a class="card" href="Chapter%20Timeline.html"><span class="arrow">↗</span><h2>ไทม์ไลน์ตาม Chapter</h2><p>ช่วงเวลาเริ่มและจบของแต่ละ Chapter</p></a>
-      <a class="card" href="Key%20Times.html"><span class="arrow">↗</span><h2>เวลาหลัก</h2><p>Ancient Ruins, Altar of Darkness และ Bundle</p></a>
-      <a class="card" href="Registration%20Dates.html"><span class="arrow">↗</span><h2>วันที่ลงทะเบียน</h2><p>ตัวเลือกวันเริ่มและข้อมูลตั้งต้นของไทม์ไลน์</p></a>
-    </section>
-    <footer>ตารางนี้จัดทำเพื่อใช้อ้างอิง กำหนดการในเกมอาจมีการเปลี่ยนแปลง โปรดตรวจสอบประกาศล่าสุดในเกมด้วย</footer>
-  </main>
+
+  <!-- Top Sticky Navigation Bar -->
+  <nav class="site-nav">
+    <a href="index.html" class="site-nav-brand">
+      ⚔️ KvK 3 · Thailand Time
+    </a>
+    <div class="site-nav-links">
+      <a href="index.html" class="site-nav-link active">🏠 หน้าหลัก</a>
+      <a href="Save%20the%20Dates.html" class="site-nav-link">⭐ วันสำคัญ</a>
+      <a href="Key%20Times.html" class="site-nav-link">⏱️ Ancient Ruins & Altars</a>
+      <a href="Timeline.html" class="site-nav-link">📅 ปฏิทินรายวัน</a>
+      <a href="Chapter%20Timeline.html" class="site-nav-link">📜 Chapter ไทม์ไลน์</a>
+      <a href="Registration%20Dates.html" class="site-nav-link">⚙️ วันที่ลงทะเบียน</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-badge">
+        <span>🇹🇭 เวลาประเทศไทย UTC+7 (GMT+7)</span>
+      </div>
+      <h1>KvK 3 — King of All Britain</h1>
+      <p>
+        ศูนย์รวมข้อมูลกำหนดการ วันสำคัญ เวลาเปิดด่าน แหล่งโบราณสถาน และไทม์ไลน์บททดสอบทั้งหมดในสมรภูมิ KvK 3 ปรับเทียบเป็นเวลาไทยเรียบร้อยแล้ว
+      </p>
+
+      <!-- Quick Summary Status Cards -->
+      <div class="quick-status-grid">
+        <div class="status-box">
+          <div class="status-box-title">วันเปิด Lost Kingdom</div>
+          <div class="status-box-val highlight-blue">พฤหัส 5 พ.ย. 07:00</div>
+        </div>
+        <div class="status-box">
+          <div class="status-box-title">ด่าน 4 (Pass 4) เปิด</div>
+          <div class="status-box-val highlight-gold">ศุกร์ 13 พ.ย. 22:00</div>
+        </div>
+        <div class="status-box">
+          <div class="status-box-title">ด่าน 7 ปะทะ (Pass 7)</div>
+          <div class="status-box-val highlight-red">อังคาร 1 ธ.ค. 22:00</div>
+        </div>
+        <div class="status-box">
+          <div class="status-box-title">ยึด Ziggurat กลางแมพ</div>
+          <div class="status-box-val highlight-gold">อังคาร 8 ธ.ค. 22:00</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Hub Grid -->
+    <main>
+      <div class="nav-cards">
+        <a href="Save%20the%20Dates.html" class="nav-card">
+          <div>
+            <div class="nav-card-icon">📌</div>
+            <h2 class="nav-card-title">วันสำคัญ (Save the Dates) <span>↗</span></h2>
+            <p class="nav-card-desc">สรุปทุกเหตุการณ์สำคัญ ตั้งแต่เปิด LK, Ancient Ruins ครั้งแรก, Pass 4, Pass 7 ไปจนถึง Pass 9 ในตารางเดียว</p>
+          </div>
+          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+        </a>
+
+        <a href="Key%20Times.html" class="nav-card">
+          <div>
+            <div class="nav-card-icon">⏳</div>
+            <h2 class="nav-card-title">เวลาหลัก (Key Times) <span>↗</span></h2>
+            <p class="nav-card-desc">รอบเวลา Ancient Ruins (ทุก 40 ชม.), Altar of Darkness (ทุก 86 ชม.) และรอบการขาย Bundle กล่องความมั่งคั่ง</p>
+          </div>
+          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+        </a>
+
+        <a href="Timeline.html" class="nav-card">
+          <div>
+            <div class="nav-card-icon">🗓️</div>
+            <h2 class="nav-card-title">ไทม์ไลน์รายวัน (Daily Timeline) <span>↗</span></h2>
+            <p class="nav-card-desc">ปฏิทินตารางงานแบบ Full Calendar รายวันตลอดทั้งเดือน แบ่งแถบสีตามกิจกรรม ศึกใหญ่ และด่านเปิด</p>
+          </div>
+          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+        </a>
+
+        <a href="Chapter%20Timeline.html" class="nav-card">
+          <div>
+            <div class="nav-card-icon">📜</div>
+            <h2 class="nav-card-title">ไทม์ไลน์ Chapter (Chronicles) <span>↗</span></h2>
+            <p class="nav-card-desc">ความคืบหน้าของภารกิจประวัติศาสตร์ พงศาวดารแต่ละ Chapter ระยะเวลา เงื่อนไข และสิ่งที่จะปลดล็อค</p>
+          </div>
+          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+        </a>
+
+        <a href="Registration%20Dates.html" class="nav-card">
+          <div>
+            <div class="nav-card-icon">⚙️</div>
+            <h2 class="nav-card-title">วันที่ลงทะเบียน & ข้อมูล <span>↗</span></h2>
+            <p class="nav-card-desc">การตั้งค่าวันเปิดรอบ ข้อมูลกิลด์ ผู้จัดทำต้นฉบับ Evil Ciro และช่องทาง Discord Kings Codex</p>
+          </div>
+          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>KvK 3 King of All Britain Schedule Portal (Thailand Time UTC+7) • ข้อมูลอ้างอิงจากแผนภูมิสถิติ Evil Ciro</p>
+      <p style="opacity: 0.7; font-size: 0.8rem;">กำหนดการในเกมอาจมีการเปลี่ยนแปลงตามการอัปเดตของเซิร์ฟเวอร์</p>
+    </footer>
+  </div>
+
 </body>
 </html>
