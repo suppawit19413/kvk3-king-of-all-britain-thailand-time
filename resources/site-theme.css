@@ -13,14 +13,10 @@
   --accent-red: #ef4444;
 }
 
-/* Reset row headers & column headers from raw google sheet export */
-th.row-header,
-th[id*="C"],
-th.freezebar-cell,
-col.row-header,
-col.frozen-column-cell,
-thead {
-  display: none !important;
+/* Reset row headers from raw google sheet export if needed */
+th.row-header {
+  opacity: 0.35;
+  font-size: 10px;
 }
 
 /* Base Body Setup */
@@ -165,3 +161,4 @@ table.waffle td {
     padding: 10px;
   }
 }
+
