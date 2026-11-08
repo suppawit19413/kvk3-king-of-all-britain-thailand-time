@@ -2,132 +2,137 @@
 <html lang="th">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="description" content="ปฏิทิน ตารางกิจกรรม และไทม์ไลน์ KvK 3 King of All Britain เวลาไทย UTC+7">
   <title>KvK 3 — King of All Britain | ปฏิทินและเวลาไทย UTC+7</title>
   <link rel="stylesheet" href="resources/site-theme.css">
   <style>
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 60px 16px 40px;
-      max-width: 900px;
+      padding: 40px 12px 28px;
+      max-width: 860px;
       margin: 0 auto;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: #7dd3fc;
       padding: 6px 14px;
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
       font-weight: 900;
-      line-height: 1.15;
-      margin: 0 0 16px;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      line-height: 1.18;
+      margin: 0 0 14px;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
     }
     .hero p {
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
       color: var(--text-muted);
       line-height: 1.6;
-      margin: 0 auto 30px;
-      max-width: 680px;
+      margin: 0 auto 24px;
+      max-width: 620px;
     }
+
+    /* Key Timelines Quick Bar */
     .quick-status-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 20px auto 40px;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 20px auto 36px;
+      max-width: 1060px;
     }
     .status-box {
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(17, 24, 39, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
-      padding: 16px 20px;
+      padding: 16px 18px;
       text-align: left;
+      transition: border-color 0.2s ease;
+    }
+    .status-box:hover {
+      border-color: rgba(56, 189, 248, 0.3);
     }
     .status-box-title {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #94a3b8;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
       font-weight: 700;
       margin-bottom: 6px;
     }
     .status-box-val {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 700;
-      color: #f8fafc;
+      color: #f9fafb;
     }
-    .highlight-red { color: #f87171; }
-    .highlight-gold { color: #fbbf24; }
     .highlight-blue { color: #38bdf8; }
-    
+    .highlight-gold { color: #fbbf24; }
+    .highlight-red  { color: #f87171; }
+    .highlight-purple { color: #c084fc; }
+
+    /* Navigation Grid Cards */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin: 0 0 16px;
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .nav-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
+      gap: 16px;
+      max-width: 1060px;
       margin: 0 auto;
     }
     .nav-card {
       position: relative;
-      background: linear-gradient(145deg, rgba(23, 33, 56, 0.7), rgba(15, 23, 42, 0.8));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      padding: 24px;
+      background: linear-gradient(145deg, rgba(24, 32, 47, 0.8), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 22px;
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
-      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .nav-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: rgba(56, 189, 248, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.15);
-    }
-    .nav-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-    .nav-card:hover::before {
-      opacity: 1;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(56, 189, 248, 0.12);
     }
     .nav-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 14px;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
     }
     .nav-card-title {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       font-weight: 700;
       margin: 0 0 8px;
-      color: #f8fafc;
+      color: #f9fafb;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .nav-card-desc {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.5;
       margin: 0 0 16px;
     }
@@ -135,15 +140,33 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: #38bdf8;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 24px 8px 16px;
+      }
+      .quick-status-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .nav-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .nav-card {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Sticky Navigation Bar -->
+  <!-- Top Navigation Bar -->
   <nav class="site-nav">
     <a href="index.html" class="site-nav-brand">
       ⚔️ KvK 3 · Thailand Time
@@ -166,10 +189,10 @@
       </div>
       <h1>KvK 3 — King of All Britain</h1>
       <p>
-        ศูนย์รวมข้อมูลกำหนดการ วันสำคัญ เวลาเปิดด่าน แหล่งโบราณสถาน และไทม์ไลน์บททดสอบทั้งหมดในสมรภูมิ KvK 3 ปรับเทียบเป็นเวลาไทยเรียบร้อยแล้ว
+        ศูนย์รวมข้อมูลกำหนดการ วันสำคัญ เวลาเปิดด่าน แหล่งโบราณสถาน และไทม์ไลน์บททดสอบทั้งหมดในสมรภูมิ KvK 3 รองรับการเปิดดูทั้งในคอมและมือถือ
       </p>
 
-      <!-- Quick Summary Status Cards -->
+      <!-- Quick Status Cards -->
       <div class="quick-status-grid">
         <div class="status-box">
           <div class="status-box-title">วันเปิด Lost Kingdom</div>
@@ -185,13 +208,14 @@
         </div>
         <div class="status-box">
           <div class="status-box-title">ยึด Ziggurat กลางแมพ</div>
-          <div class="status-box-val highlight-gold">อังคาร 8 ธ.ค. 22:00</div>
+          <div class="status-box-val highlight-purple">อังคาร 8 ธ.ค. 22:00</div>
         </div>
       </div>
     </header>
 
     <!-- Navigation Hub Grid -->
-    <main>
+    <main style="max-width: 1060px; margin: 0 auto;">
+      <div class="section-title">📂 เลือกตารางข้อมูลที่ต้องการดู</div>
       <div class="nav-cards">
         <a href="Save%20the%20Dates.html" class="nav-card">
           <div>
@@ -199,7 +223,7 @@
             <h2 class="nav-card-title">วันสำคัญ (Save the Dates) <span>↗</span></h2>
             <p class="nav-card-desc">สรุปทุกเหตุการณ์สำคัญ ตั้งแต่เปิด LK, Ancient Ruins ครั้งแรก, Pass 4, Pass 7 ไปจนถึง Pass 9 ในตารางเดียว</p>
           </div>
-          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+          <div class="nav-card-action">เปิดดูตาราง ➔</div>
         </a>
 
         <a href="Key%20Times.html" class="nav-card">
@@ -208,7 +232,7 @@
             <h2 class="nav-card-title">เวลาหลัก (Key Times) <span>↗</span></h2>
             <p class="nav-card-desc">รอบเวลา Ancient Ruins (ทุก 40 ชม.), Altar of Darkness (ทุก 86 ชม.) และรอบการขาย Bundle กล่องความมั่งคั่ง</p>
           </div>
-          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+          <div class="nav-card-action">เปิดดูตาราง ➔</div>
         </a>
 
         <a href="Timeline.html" class="nav-card">
@@ -217,7 +241,7 @@
             <h2 class="nav-card-title">ไทม์ไลน์รายวัน (Daily Timeline) <span>↗</span></h2>
             <p class="nav-card-desc">ปฏิทินตารางงานแบบ Full Calendar รายวันตลอดทั้งเดือน แบ่งแถบสีตามกิจกรรม ศึกใหญ่ และด่านเปิด</p>
           </div>
-          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+          <div class="nav-card-action">เปิดดูตาราง ➔</div>
         </a>
 
         <a href="Chapter%20Timeline.html" class="nav-card">
@@ -226,7 +250,7 @@
             <h2 class="nav-card-title">ไทม์ไลน์ Chapter (Chronicles) <span>↗</span></h2>
             <p class="nav-card-desc">ความคืบหน้าของภารกิจประวัติศาสตร์ พงศาวดารแต่ละ Chapter ระยะเวลา เงื่อนไข และสิ่งที่จะปลดล็อค</p>
           </div>
-          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+          <div class="nav-card-action">เปิดดูตาราง ➔</div>
         </a>
 
         <a href="Registration%20Dates.html" class="nav-card">
@@ -235,15 +259,15 @@
             <h2 class="nav-card-title">วันที่ลงทะเบียน & ข้อมูล <span>↗</span></h2>
             <p class="nav-card-desc">การตั้งค่าวันเปิดรอบ ข้อมูลกิลด์ ผู้จัดทำต้นฉบับ Evil Ciro และช่องทาง Discord Kings Codex</p>
           </div>
-          <div class="nav-card-action">เปิดหน้านี้ ➔</div>
+          <div class="nav-card-action">เปิดดูตาราง ➔</div>
         </a>
       </div>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <p>KvK 3 King of All Britain Schedule Portal (Thailand Time UTC+7) • ข้อมูลอ้างอิงจากแผนภูมิสถิติ Evil Ciro</p>
-      <p style="opacity: 0.7; font-size: 0.8rem;">กำหนดการในเกมอาจมีการเปลี่ยนแปลงตามการอัปเดตของเซิร์ฟเวอร์</p>
+      <p>KvK 3 King of All Britain Schedule Portal (Thailand Time UTC+7) • จัดทำโดยอ้างอิงจากแผนภูมิสถิติ Evil Ciro</p>
+      <p style="opacity: 0.65; font-size: 0.8rem; margin-top: 4px;">กำหนดการในเกมอาจมีการเปลี่ยนแปลงตามประกาศของทีมงานเกม</p>
     </footer>
   </div>
 
